@@ -26,6 +26,9 @@ bridge-token
 reviewed-sources.json
 *.sqlite3
 
+# Unreviewed legacy distribution archive: contains internal/personal context.
+PaperFlow-0.2.0-ecosystem.zip
+
 # 系统文件
 Thumbs.db
 .DS_Store

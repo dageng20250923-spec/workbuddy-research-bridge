@@ -16,15 +16,15 @@ Obsidian 文献卡片及 AI 阅读依赖另行安装、配置的 **Research Brid
 
 **版本边界：**目前是 Windows 本地工具与组件集合，不是安装后即可使用的公共在线服务。`client/` 桌面窗口仍是配置与模拟验证版，不会直接运行真实下载或导入；WorkBuddy 技能需要用户导入和配置，不能把任务导出视为自动化已经启用。微信链接接收入口需要单独接入，本工具不会读取任意个人聊天，也不自动打开、搜索或操作微信窗口。
 
-### 新版手册中的扩展流程（配套文件待发布）
+### 两级分类与每日整理
 
-本地新版手册补充了以下使用流程。**当前公开仓库仍提供 0.7.0 插件；0.7.4 安装包、智能分类脚本和新版手册尚未随本次简介更新发布。**下面不是当前下载仓库即可使用的功能承诺。
+仓库现提供 [新版用户手册](./用户手册.md)、[智能分类脚本](./batch/classify_smart.py) 和 [0.7.4 插件安装包](./backup/wechat-zotero-importer-0.7.0/wechat-zotero-importer@example.com-0.7.4.xpi)。请先配置自己的目录、账号与“待识别”集合编号，再使用以下扩展流程。
 
 - **两级分类：**导入时先用关键词规则兜底；对“待识别”文献，再由 WorkBuddy 中的智能体阅读题名和摘要、提出维度与类别，经新版插件的 `/wechat-zotero/classify` 接口回写到 `微信文献 → 维度 → 类别`。扩展维度可涵盖成像方法以外的学科；证据不足时保留待识别，不强行归类。脚本本身不包含分类模型，也不会自行完成推理。
 - **每日整理时间：**0.7.4 插件设置页可保存 `HH:MM` 时间；需要另行建立 WorkBuddy“时间同步”和“文献整理”两个自动化任务才能联动。按手册方案，次日 00:05 同步，再按新时间整理；不是保存即生效，也不会因安装插件而自动建立调度。
 - **兼容声明：**0.7.4 安装包的 manifest 将上限声明为 Zotero `10.0.*`；这是版本范围声明，不代表本仓库已经完成 Zotero 10 的运行兼容性验证。
 
-待配套文件完成审查并发布后，本节会改为正式使用说明。在此之前，请按下面已公开的组件与 [用户手册](./用户手册.md) 使用，不要将“待发布”流程直接用于真实文库。
+智能分类脚本是连接智能体与插件的接口工具，不是独立的 AI 分类器；发布版不包含作者的集合编号，请按手册 §5.4 将 `PENDING_COLLECTION` 占位值替换为自己库中的编号。建议先用一篇文献验证，再启用自己配置的自动化。每日整理与时间同步任务也需要用户另行创建；仓库不会替用户创建或启用任务。
 
 开始前请阅读 [用户手册](./用户手册.md) 与 [桌面客户端说明](./client/README.md)。源码采用 MIT 许可证；第三方软件、模型服务与论文全文的许可独立适用。欢迎通过 Issues 反馈问题或通过 Pull Request 参与完善。
 
@@ -36,20 +36,21 @@ PaperFlow is an open-source local literature-management workflow connecting PDF 
 
 ## What it does
 
-The pipeline has four stages, each owned by a small, single-purpose module:
+The pipeline has five stages, each owned by a small, single-purpose module:
 
 | Stage | Module | Automatic |
 |---|---|---|
 | 1. Scan a WeChat file folder; split academic papers from personal documents | `batch/scan_pdf_dir.py` | yes |
 | 2. Download papers (by DOI/link, via the scansci-pdf suite) | `batch/orchestrate.py` + `batch/scansci_adapter.py` | yes |
 | 3. Import into Zotero and classify by imaging method | Zotero plugin `/wechat-zotero/import` + classifier | yes |
-| 4. Sync to Obsidian + AI reading | Obsidian "Research Bridge" plugin | semi (see below) |
+| 4. Classify pending items into agent-selected dimensions/categories | `batch/classify_smart.py` + plugin 0.7.4 | requires an external agent and local configuration |
+| 5. Sync to Obsidian + AI reading | Obsidian "Research Bridge" plugin | semi (see below) |
 
 Here, "automatic" describes processing within an invoked stage, not an out-of-the-box background service. The desktop client is a configuration/simulation tool; it does not execute the live pipeline. Link reception and WorkBuddy task activation must be configured separately. Download support is limited to supported sources with lawful access, and keyword-based classification requires review when evidence is insufficient.
 
-The updated local manual also describes agent-assisted multi-dimensional classification and a plugin-configurable daily schedule. Their companion script, plugin 0.7.4 and updated manual are not yet published in this repository. Classification requires an external agent, and schedule changes require separately configured WorkBuddy automations; neither runs just by installing the desktop client.
+The updated manual, companion classification script and plugin 0.7.4 are included. Set the script's pending-collection key to your own library's key before using it. Classification requires an external agent, and schedule changes require separately configured WorkBuddy automations; neither runs just by installing the desktop client.
 
-**About "automatic AI literature reading":** stage 4 relies on the third-party [Research Bridge](https://obsidian.md) Obsidian plugin. PaperFlow only delivers items into Zotero and *read-only observes* whether Research Bridge has produced a note / AI task. The AI reading itself is triggered by Research Bridge inside Obsidian and requires the user to configure an AI provider (API key) there. Without that, you get import + literature cards, but no AI reading.
+**About "automatic AI literature reading":** stage 5 relies on the third-party [Research Bridge](https://obsidian.md) Obsidian plugin. PaperFlow only delivers items into Zotero and *read-only observes* whether Research Bridge has produced a note / AI task. The AI reading itself is triggered by Research Bridge inside Obsidian and requires the user to configure an AI provider (API key) there. Without that, you get import + literature cards, but no AI reading.
 
 ## Repository layout
 
@@ -59,7 +60,7 @@ The updated local manual also describes agent-assisted multi-dimensional classif
 ├── receiver/               WeChat callback receiver (service skeleton)
 ├── client/                 local Tk desktop client (config window + simulation)
 ├── workbuddy/              WorkBuddy skill package (paperflow-workbuddy)
-├── backup/                 Zotero plugin 0.7.0 source + XPI (for reference)
+├── backup/                 legacy 0.7.0 source/XPI + current 0.7.4 XPI
 ├── docs/                   guides & the user manual
 ├── install.ps1             one-click isolated-env installer (Windows)
 ├── requirements.txt        project dependencies (pypdf only)
@@ -69,8 +70,9 @@ The updated local manual also describes agent-assisted multi-dimensional classif
 ## Requirements
 
 - Windows, Python 3.10+ (3.11 recommended)
-- Zotero 7.x / 9.x + the "微信 PDF 自动整理" plugin (0.7.0, XPI in `backup/`)
-- Obsidian + "Research Bridge" plugin (for stage 4)
+- Zotero + the "微信 PDF 自动整理" plugin (use 0.7.4 XPI in `backup/`; manifest range `6.999`–`10.0.*`, not a runtime compatibility guarantee)
+- An external agent such as WorkBuddy and your own pending-collection key (for stage 4)
+- Obsidian + "Research Bridge" plugin (for stage 5)
 - scansci-pdf suite with its own venv (for downloads)
 - WeChat (PC) as the PDF source
 
@@ -93,7 +95,7 @@ Full configuration steps (Zotero plugin, WeChat folder, Obsidian/Research Bridge
 
 - **Isolated runtime** — the installer builds a project-local `.venv`; nothing is written to system Python or PATH.
 - **Review before distribution** — packaging uses an explicit file list, but generated archives must still be inspected for credentials, personal paths and private data before sharing. No prebuilt ecosystem ZIP is included in this repository.
-- **Read-only observation** — the workflow never overwrites personal notes or existing classifications.
+- **Explicit write boundaries** — note observation is read-only. Smart classification `apply` explicitly changes Zotero collections/tags and can replace memberships inside the plugin's collection tree; use it only on reviewed, authorized pending items. It preserves collections outside the plugin tree.
 - **Fail visible** — download/import failures stay in the ledger and are reported per-article; nothing is silently marked successful.
 - **No WeChat UI automation** — the tool never opens, searches, or controls the WeChat window.
 
