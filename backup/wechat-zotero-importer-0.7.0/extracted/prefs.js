@@ -1,0 +1,9 @@
+pref("extensions.zotero.wechatZoteroImporter.enabled", false);
+pref("extensions.zotero.wechatZoteroImporter.sourcePath", "");
+pref("extensions.zotero.wechatZoteroImporter.senderName", "打更");
+pref("extensions.zotero.wechatZoteroImporter.importHistory", true);
+pref("extensions.zotero.wechatZoteroImporter.scanIntervalSeconds", 30);
+pref("extensions.zotero.wechatZoteroImporter.quietSeconds", 120);
+pref("extensions.zotero.wechatZoteroImporter.classificationProfileId", "optical_imaging");
+pref("extensions.zotero.wechatZoteroImporter.setupPrompted", false);
+pref("extensions.zotero.wechatZoteroImporter.migrationVersion", 0);

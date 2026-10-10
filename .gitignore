@@ -1,0 +1,31 @@
+# PaperFlow 项目 .gitignore
+# 排除运行时、虚拟环境、临时数据、个人数据与凭据。
+
+# Python 隔离虚拟环境（本机生成，不随包分发）
+.venv/
+
+# 运行时产物与临时文件
+__pycache__/
+*.pyc
+.tmp/
+.tmp_*/
+tmp_*/
+*.lock
+
+# 下载与任务账本（含个人数据/隐私）
+downloads/
+jobs/
+reports/
+runtime/
+
+# 个人资料归档（隐私，绝不入包）
+个人资料/
+
+# 凭据与本地状态
+bridge-token
+reviewed-sources.json
+*.sqlite3
+
+# 系统文件
+Thumbs.db
+.DS_Store

@@ -1,0 +1,69 @@
+<vbox id="wechat-zotero-preferences"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      style="overflow:auto; padding:12px;"
+      onload="if (typeof WeChatZoteroPrefs !== 'undefined') WeChatZoteroPrefs.onLoad()">
+  <html:style>
+    .wzi-card { border: 1px solid rgba(127,127,127,.25); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+    .wzi-title { font-size: 1.1em; font-weight: 650; margin: 0 0 8px; }
+    .wzi-note { opacity: .75; line-height: 1.5; margin: 4px 0 12px; }
+    .wzi-row { display: grid; grid-template-columns: 150px minmax(260px,1fr) auto; gap: 8px; align-items: center; margin: 9px 0; }
+    .wzi-row input[type="text"] { min-width: 260px; }
+    .wzi-row input[type="number"] { width: 90px; }
+    .wzi-actions { display:flex; gap:8px; align-items:center; margin-top:12px; }
+    #wzi-status { opacity:.85; }
+  </html:style>
+
+  <html:div class="wzi-card">
+    <html:div class="wzi-title">后台自动导入</html:div>
+    <html:p class="wzi-note">Zotero 打开时，每 30 秒静默检查一次目录；文件停止变化 2 分钟后按批导入。不会打开、搜索或控制微信窗口。</html:p>
+    <html:label><html:input id="wzi-enabled" type="checkbox"/> 启用后台自动导入</html:label>
+
+    <html:div class="wzi-row">
+      <html:label for="wzi-source-path">PDF 来源文件夹</html:label>
+      <html:input id="wzi-source-path" type="text" readonly="readonly"/>
+      <button label="选择…" oncommand="WeChatZoteroPrefs.browse()"/>
+    </html:div>
+    <html:div class="wzi-row">
+      <html:label for="wzi-sender-name">发送方备注</html:label>
+      <html:input id="wzi-sender-name" type="text" maxlength="60" placeholder="例如：打更"/>
+      <html:span/>
+    </html:div>
+    <html:label><html:input id="wzi-import-history" type="checkbox"/> 首次使用此目录时自动处理已有 PDF</html:label>
+  </html:div>
+
+  <html:div class="wzi-card">
+    <html:div class="wzi-title">学术分类模式</html:div>
+    <html:p class="wzi-note">不同模式使用完全隔离的受控词表。切换后只影响新冻结的导入批次，不会自动改动文库中的现有条目。</html:p>
+    <html:div class="wzi-row">
+      <html:label for="wzi-classification-profile">当前研究方向</html:label>
+      <html:select id="wzi-classification-profile"></html:select>
+      <html:span/>
+    </html:div>
+    <html:p id="wzi-profile-description" class="wzi-note"></html:p>
+    <html:div class="wzi-actions">
+      <button label="按当前模式重新分类已有条目…" oncommand="WeChatZoteroPrefs.reclassifyExisting()"/>
+      <html:span>仅在确认后执行；保留不属于本插件的集合。</html:span>
+    </html:div>
+  </html:div>
+
+  <html:div class="wzi-card">
+    <html:div class="wzi-title">扫描节奏</html:div>
+    <html:div class="wzi-row">
+      <html:label for="wzi-scan-seconds">扫描间隔（秒）</html:label>
+      <html:input id="wzi-scan-seconds" type="number" min="10" max="3600"/>
+      <html:span>默认 30</html:span>
+    </html:div>
+    <html:div class="wzi-row">
+      <html:label for="wzi-quiet-seconds">静默等待（秒）</html:label>
+      <html:input id="wzi-quiet-seconds" type="number" min="30" max="3600"/>
+      <html:span>默认 120</html:span>
+    </html:div>
+    <html:p class="wzi-note">分类优先使用题名，其次摘要；正文中的词需要重复出现才作为依据。证据不足或并列时进入所选模式下的“待识别”。</html:p>
+    <html:div class="wzi-actions">
+      <button label="保存并启动" oncommand="WeChatZoteroPrefs.save()"/>
+      <button label="立即扫描" oncommand="WeChatZoteroPrefs.scanNow()"/>
+      <html:span id="wzi-status"></html:span>
+    </html:div>
+  </html:div>
+</vbox>

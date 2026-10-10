@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "root": "微信文献",
+  "imaging_method_min_score": 2.0,
+  "max_imaging_methods": 5,
+  "unidentified_imaging_method": "成像方法/待识别",
+  "imaging_methods": [
+    {"label": "OCT", "aliases": ["optical coherence tomography", "optical coherence tomographic", "oct", "octa", "swept-source oct", "ss-oct", "spectral-domain oct", "sd-oct", "光学相干断层成像", "光学相干断层扫描", "光学相干层析", "相干层析成像"]},
+    {"label": "光纤成像", "aliases": ["fiber-optic imaging", "fibre-optic imaging", "fiber optic imaging", "fibre optic imaging", "optical fiber imaging", "optical fibre imaging", "fiber bundle imaging", "fibre bundle imaging", "coherent fiber bundle", "coherent fibre bundle", "fiber-bundle endomicroscopy", "fibre-bundle endomicroscopy", "光纤成像", "光纤束成像", "相干光纤束"]},
+    {"label": "计算成像", "aliases": ["computational imaging", "computational microscopy", "image reconstruction", "phase retrieval", "ptychography", "inverse imaging", "inverse problem imaging", "compressive imaging", "compressed sensing imaging", "lensless imaging", "coded aperture imaging", "计算成像", "计算显微", "图像重建", "相位恢复", "叠层成像", "无透镜成像", "编码孔径成像"]},
+    {"label": "光片显微", "aliases": ["light-sheet microscopy", "light sheet microscopy", "light-sheet imaging", "light sheet imaging", "selective plane illumination microscopy", "spim", "lattice light-sheet", "lattice light sheet", "光片显微", "光片成像", "选择性平面照明显微"]},
+    {"label": "共聚焦显微", "aliases": ["confocal microscopy", "confocal imaging", "confocal mesoscope", "confocal", "laser scanning confocal", "共聚焦显微", "共焦显微", "共聚焦介观显微", "激光扫描共聚焦"]},
+    {"label": "超分辨显微", "aliases": ["super-resolution microscopy", "super resolution microscopy", "stimulated emission depletion microscopy", "sted microscopy", "photoactivated localization microscopy", "palm microscopy", "stochastic optical reconstruction microscopy", "storm microscopy", "structured illumination microscopy", "sim microscopy", "超分辨显微", "受激发射损耗显微", "单分子定位显微", "结构光照明显微"]},
+    {"label": "双光子/多光子显微", "aliases": ["two-photon microscopy", "two photon microscopy", "two-photon imaging", "two photon imaging", "multiphoton microscopy", "multi-photon microscopy", "multiphoton imaging", "双光子显微", "双光子成像", "多光子显微", "多光子成像"]},
+    {"label": "荧光成像", "aliases": ["fluorescence imaging", "fluorescence microscopy", "fluorescence lifetime imaging", "flim", "荧光成像", "荧光显微", "荧光寿命成像"]},
+    {"label": "拉曼成像", "aliases": ["raman imaging", "raman microscopy", "coherent anti-stokes raman scattering", "cars microscopy", "stimulated raman scattering microscopy", "srs microscopy", "拉曼成像", "拉曼显微", "相干反斯托克斯拉曼", "受激拉曼散射显微"]},
+    {"label": "光声成像", "aliases": ["photoacoustic imaging", "photoacoustic microscopy", "photoacoustic tomography", "optoacoustic imaging", "optoacoustic tomography", "光声成像", "光声显微", "光声断层成像"]},
+    {"label": "相位成像", "aliases": ["quantitative phase imaging", "phase contrast microscopy", "phase imaging", "digital holographic microscopy", "定量相位成像", "相衬显微", "相位成像", "数字全息显微"]},
+    {"label": "全息成像", "aliases": ["holographic imaging", "digital holography", "holographic microscopy", "全息成像", "数字全息", "全息显微"]},
+    {"label": "偏振成像", "aliases": ["polarization imaging", "polarimetric imaging", "polarization-sensitive imaging", "polarization sensitive imaging", "偏振成像", "偏振敏感成像"]},
+    {"label": "高光谱成像", "aliases": ["hyperspectral imaging", "spectral imaging", "multispectral imaging", "高光谱成像", "光谱成像", "多光谱成像"]},
+    {"label": "内窥成像", "aliases": ["endoscopic imaging", "endoscopy", "optical endoscopy", "optical endoscopic imaging", "endomicroscopy", "microendoscopy", "fiber-optic endoscopy", "fibre-optic endoscopy", "内窥成像", "内镜成像", "光学内窥", "显微内镜"]},
+    {"label": "光场成像", "aliases": ["light-field imaging", "light field imaging", "light-field microscopy", "light field microscopy", "plenoptic imaging", "plenoptic microscopy", "光场成像", "光场显微", "全光成像"]},
+    {"label": "波前编码成像", "aliases": ["wave-front coding", "wavefront coding", "wavefront-coded imaging", "wavefront coded imaging", "extended depth of field imaging", "extended depth-of-field imaging", "波前编码", "波前编码成像", "扩展景深成像"]},
+    {"label": "SCAPE显微", "aliases": ["scape microscopy", "scape imaging", "swept confocally-aligned planar excitation", "swept confocally aligned planar excitation", "SCAPE显微", "扫掠共焦对齐平面激发"]},
+    {"label": "宽场成像", "aliases": ["wide-field microscopy", "wide field microscopy", "wide-field imaging", "wide field imaging", "宽场显微", "宽场成像"]},
+    {"label": "散斑成像", "aliases": ["speckle imaging", "laser speckle imaging", "laser speckle contrast imaging", "lsci", "散斑成像", "激光散斑成像", "激光散斑衬比成像"]}
+  ]
+}

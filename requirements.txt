@@ -1,0 +1,13 @@
+# PaperFlow 项目独立 Python 环境依赖
+#
+# 用途：batch 目录的「论文下载 -> Zotero 入库」链路中，paper_batch.pdf_identity()
+# 使用 pypdf 校验 PDF 内容与 DOI 身份是否一致。
+#
+# 说明：
+# 1. scan_pdf_dir.py（目录扫描/分流/归档）只用标准库，无需任何第三方依赖。
+# 2. requests / scansci-pdf 属于 scansci-pdf 套件，请装在其独立的 venv 中
+#    （参见安装脚本与用户手册），不要装进本项目的 venv。
+#
+# 安装：python -m venv .venv && .venv/Scripts/python -m pip install -r requirements.txt
+
+pypdf>=4.0

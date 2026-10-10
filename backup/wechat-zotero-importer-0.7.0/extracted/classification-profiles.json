@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "root": "微信文献",
+  "default_profile": "optical_imaging",
+  "profiles": [
+    {
+      "id": "optical_imaging",
+      "label": "光学成像",
+      "description": "按论文采用的光学成像方法分类",
+      "collection_dimension": "成像方法",
+      "minimum_score": 2,
+      "minimum_margin": 1,
+      "max_keywords": 3,
+      "categories": [
+        {"label":"OCT","aliases":["optical coherence tomography","optical coherence tomographic","oct","octa","swept-source oct","ss-oct","spectral-domain oct","sd-oct","光学相干断层成像","光学相干断层扫描","光学相干层析"]},
+        {"label":"光纤成像","aliases":["fiber-optic imaging","fibre-optic imaging","fiber optic imaging","optical fiber imaging","fiber bundle imaging","coherent fiber bundle","fiber-bundle endomicroscopy","光纤成像","光纤束成像","相干光纤束"]},
+        {"label":"计算成像","aliases":["computational imaging","computational microscopy","phase retrieval","ptychography","inverse imaging","compressive imaging","compressed sensing imaging","lensless imaging","coded aperture imaging","计算成像","计算显微","相位恢复","叠层成像","无透镜成像","编码孔径成像"]},
+        {"label":"光片显微","aliases":["light-sheet microscopy","light sheet microscopy","light-sheet imaging","selective plane illumination microscopy","spim","lattice light-sheet","光片显微","光片成像","选择性平面照明显微"]},
+        {"label":"共聚焦显微","aliases":["confocal microscopy","confocal imaging","confocal mesoscope","laser scanning confocal","共聚焦显微","共焦显微","激光扫描共聚焦"]},
+        {"label":"超分辨显微","aliases":["super-resolution microscopy","stimulated emission depletion microscopy","sted microscopy","photoactivated localization microscopy","palm microscopy","stochastic optical reconstruction microscopy","storm microscopy","structured illumination microscopy","sim microscopy","超分辨显微","受激发射损耗显微","单分子定位显微","结构光照明显微"]},
+        {"label":"双光子/多光子显微","aliases":["two-photon microscopy","two photon microscopy","two-photon imaging","multiphoton microscopy","multi-photon microscopy","multiphoton imaging","双光子显微","双光子成像","多光子显微","多光子成像"]},
+        {"label":"荧光成像","aliases":["fluorescence imaging","fluorescence microscopy","fluorescence lifetime imaging","flim","荧光成像","荧光显微","荧光寿命成像"]},
+        {"label":"拉曼成像","aliases":["raman imaging","raman microscopy","coherent anti-stokes raman scattering","cars microscopy","stimulated raman scattering microscopy","srs microscopy","拉曼成像","拉曼显微","相干反斯托克斯拉曼","受激拉曼散射显微"]},
+        {"label":"光声成像","aliases":["photoacoustic imaging","photoacoustic microscopy","photoacoustic tomography","optoacoustic imaging","optoacoustic tomography","光声成像","光声显微","光声断层成像"]},
+        {"label":"相位成像","aliases":["quantitative phase imaging","phase contrast microscopy","phase imaging","定量相位成像","相衬显微","相位成像"]},
+        {"label":"全息成像","aliases":["holographic imaging","digital holography","holographic microscopy","全息成像","数字全息","全息显微"]},
+        {"label":"偏振成像","aliases":["polarization imaging","polarimetric imaging","polarization-sensitive imaging","偏振成像","偏振敏感成像"]},
+        {"label":"高光谱成像","aliases":["hyperspectral imaging","spectral imaging","multispectral imaging","高光谱成像","光谱成像","多光谱成像"]},
+        {"label":"内窥成像","aliases":["endoscopic imaging","optical endoscopy","optical endoscopic imaging","endomicroscopy","microendoscopy","fiber-optic endoscopy","内窥成像","内镜成像","光学内窥","显微内镜"]},
+        {"label":"光场成像","aliases":["light-field imaging","light field imaging","light-field microscopy","plenoptic imaging","plenoptic microscopy","光场成像","光场显微","全光成像"]},
+        {"label":"波前编码成像","aliases":["wave-front coding","wavefront coding","wavefront-coded imaging","extended depth of field imaging","波前编码","波前编码成像","扩展景深成像"]},
+        {"label":"SCAPE显微","aliases":["scape microscopy","scape imaging","swept confocally-aligned planar excitation","SCAPE显微","扫掠共焦对齐平面激发"]},
+        {"label":"宽场成像","aliases":["wide-field microscopy","wide field microscopy","wide-field imaging","wide field imaging","宽场显微","宽场成像"]},
+        {"label":"散斑成像","aliases":["speckle imaging","laser speckle imaging","laser speckle contrast imaging","lsci","散斑成像","激光散斑成像","激光散斑衬比成像"]}
+      ]
+    },
+    {
+      "id": "medicine",
+      "label": "医学",
+      "description": "按临床专科分类",
+      "collection_dimension": "临床专科",
+      "minimum_score": 2,
+      "minimum_margin": 1,
+      "max_keywords": 3,
+      "categories": [
+        {"label":"眼科学","aliases":["ophthalmology","ophthalmic","retinal disease","retina disease","glaucoma","cataract","macular degeneration","眼科学","眼科","视网膜疾病","青光眼","白内障","黄斑变性"]},
+        {"label":"心血管医学","aliases":["cardiology","cardiovascular disease","coronary artery","myocardial infarction","heart failure","心血管医学","心血管疾病","冠心病","心肌梗死","心力衰竭"]},
+        {"label":"神经病学","aliases":["neurology","neurological disorder","stroke","epilepsy","parkinson disease","alzheimer disease","神经病学","脑卒中","癫痫","帕金森病","阿尔茨海默病"]},
+        {"label":"肿瘤学","aliases":["oncology","cancer therapy","malignant tumor","tumour treatment","chemotherapy","肿瘤学","恶性肿瘤","癌症治疗","化疗"]},
+        {"label":"呼吸医学","aliases":["pulmonology","respiratory disease","chronic obstructive pulmonary disease","copd","asthma","呼吸医学","呼吸系统疾病","慢性阻塞性肺病","哮喘"]},
+        {"label":"消化与肝病学","aliases":["gastroenterology","hepatology","inflammatory bowel disease","liver cirrhosis","消化病学","肝病学","炎症性肠病","肝硬化"]},
+        {"label":"内分泌与代谢","aliases":["endocrinology","metabolic disease","diabetes mellitus","thyroid disease","内分泌学","代谢性疾病","糖尿病","甲状腺疾病"]},
+        {"label":"骨科","aliases":["orthopedics","orthopaedics","musculoskeletal disorder","fracture fixation","osteoarthritis","骨科","肌肉骨骼疾病","骨折固定","骨关节炎"]},
+        {"label":"皮肤病学","aliases":["dermatology","dermatological","skin disease","melanoma diagnosis","皮肤病学","皮肤疾病","黑色素瘤诊断"]},
+        {"label":"感染病学","aliases":["infectious disease","bacterial infection","viral infection","sepsis","感染病学","感染性疾病","细菌感染","病毒感染","脓毒症"]},
+        {"label":"精神医学","aliases":["psychiatry","psychiatric disorder","depression","schizophrenia","精神医学","精神障碍","抑郁症","精神分裂症"]},
+        {"label":"妇产科学","aliases":["obstetrics","gynecology","gynaecology","pregnancy complication","妇产科学","产科学","妇科学","妊娠并发症"]},
+        {"label":"儿科学","aliases":["pediatrics","paediatrics","pediatric patient","childhood disease","儿科学","儿科患者","儿童疾病"]},
+        {"label":"肾脏与泌尿医学","aliases":["nephrology","urology","chronic kidney disease","renal failure","肾脏病学","泌尿外科","慢性肾病","肾衰竭"]}
+      ]
+    },
+    {
+      "id": "life_science",
+      "label": "生命科学",
+      "description": "按生命科学研究领域与生物过程分类",
+      "collection_dimension": "研究领域",
+      "minimum_score": 2,
+      "minimum_margin": 1,
+      "max_keywords": 3,
+      "categories": [
+        {"label":"细胞生物学","aliases":["cell biology","cellular dynamics","cell migration","cell cycle","organelle dynamics","细胞生物学","细胞迁移","细胞周期","细胞器动态"]},
+        {"label":"分子生物学","aliases":["molecular biology","gene expression","transcriptional regulation","rna processing","分子生物学","基因表达","转录调控","rna加工"]},
+        {"label":"遗传与基因组学","aliases":["genetics","genomics","genome-wide","genetic variation","single-cell genomics","遗传学","基因组学","全基因组","遗传变异","单细胞基因组"]},
+        {"label":"免疫学","aliases":["immunology","immune response","t cell","b cell","adaptive immunity","innate immunity","免疫学","免疫应答","t细胞","b细胞","适应性免疫","先天免疫"]},
+        {"label":"微生物学","aliases":["microbiology","microbial community","bacterial physiology","virology","microbiome","微生物学","微生物群落","细菌生理","病毒学","微生物组"]},
+        {"label":"神经科学","aliases":["neuroscience","neural circuit","synaptic plasticity","brain function","神经科学","神经环路","突触可塑性","脑功能"]},
+        {"label":"发育生物学","aliases":["developmental biology","embryogenesis","organ development","morphogenesis","发育生物学","胚胎发生","器官发育","形态发生"]},
+        {"label":"植物生物学","aliases":["plant biology","plant physiology","photosynthesis","root development","植物生物学","植物生理","光合作用","根系发育"]},
+        {"label":"生态与进化","aliases":["ecology","evolutionary biology","biodiversity","natural selection","population ecology","生态学","进化生物学","生物多样性","自然选择","种群生态"]},
+        {"label":"结构生物学","aliases":["structural biology","protein structure","cryo-electron microscopy","cryo-em","x-ray crystallography","结构生物学","蛋白质结构","冷冻电镜","x射线晶体学"]},
+        {"label":"系统生物学","aliases":["systems biology","biological network","multi-omics integration","pathway modeling","系统生物学","生物网络","多组学整合","通路建模"]},
+        {"label":"生物化学","aliases":["biochemistry","enzyme kinetics","protein interaction","metabolic pathway","生物化学","酶动力学","蛋白质相互作用","代谢通路"]}
+      ]
+    },
+    {
+      "id": "materials_photonics",
+      "label": "材料与光子学",
+      "description": "按材料、器件或光子平台分类",
+      "collection_dimension": "材料与器件平台",
+      "minimum_score": 2,
+      "minimum_margin": 1,
+      "max_keywords": 3,
+      "categories": [
+        {"label":"超表面","aliases":["metasurface","meta-surface","metaatom","meta-atom","超表面","超构表面","超构原子"]},
+        {"label":"纳米光子学与等离激元","aliases":["nanophotonics","plasmonics","surface plasmon","localized surface plasmon","纳米光子学","等离激元","表面等离激元"]},
+        {"label":"集成与硅光子学","aliases":["integrated photonics","silicon photonics","photonic integrated circuit","silicon nitride photonics","集成光子学","硅光子学","光子集成电路","氮化硅光子"]},
+        {"label":"光纤器件","aliases":["fiber optic device","fibre optic device","fiber grating","fibre grating","fiber laser","fiber sensor","光纤器件","光纤光栅","光纤激光器","光纤传感器"]},
+        {"label":"量子光子学","aliases":["quantum photonics","single-photon source","entangled photon","quantum optical circuit","量子光子学","单光子源","纠缠光子","量子光学电路"]},
+        {"label":"半导体光电子","aliases":["semiconductor optoelectronics","light-emitting diode","photodetector","semiconductor laser","led device","半导体光电子","发光二极管","光电探测器","半导体激光器"]},
+        {"label":"非线性光学","aliases":["nonlinear optics","second harmonic generation","third harmonic generation","four-wave mixing","非线性光学","二次谐波产生","三次谐波产生","四波混频"]},
+        {"label":"激光技术","aliases":["laser technology","ultrafast laser","mode-locked laser","solid-state laser","激光技术","超快激光","锁模激光","固体激光器"]},
+        {"label":"光子晶体","aliases":["photonic crystal","photonic bandgap","photonic crystal cavity","光子晶体","光子带隙","光子晶体腔"]},
+        {"label":"光学材料","aliases":["optical material","electro-optic material","nonlinear optical material","luminescent material","光学材料","电光材料","非线性光学材料","发光材料"]},
+        {"label":"光学传感平台","aliases":["optical sensing platform","photonic sensor","biosensing platform","refractive index sensor","光学传感平台","光子传感器","生物传感平台","折射率传感器"]}
+      ]
+    },
+    {
+      "id": "ai_computing",
+      "label": "人工智能与计算机",
+      "description": "按论文解决的核心计算任务分类",
+      "collection_dimension": "核心任务",
+      "minimum_score": 2,
+      "minimum_margin": 1,
+      "max_keywords": 3,
+      "categories": [
+        {"label":"图像分割","aliases":["image segmentation","semantic segmentation","instance segmentation","medical image segmentation","图像分割","语义分割","实例分割","医学图像分割"]},
+        {"label":"目标检测","aliases":["object detection","target detection","pedestrian detection","defect detection","目标检测","行人检测","缺陷检测"]},
+        {"label":"图像分类","aliases":["image classification","visual classification","fine-grained classification","图像分类","视觉分类","细粒度分类"]},
+        {"label":"生成模型","aliases":["generative model","diffusion model","generative adversarial network","gan model","text-to-image generation","生成模型","扩散模型","生成对抗网络","文生图"]},
+        {"label":"自然语言处理","aliases":["natural language processing","language model","machine translation","named entity recognition","text classification","自然语言处理","语言模型","机器翻译","命名实体识别","文本分类"]},
+        {"label":"时间序列预测","aliases":["time series forecasting","time-series prediction","temporal forecasting","时间序列预测","时序预测"]},
+        {"label":"强化学习","aliases":["reinforcement learning","deep reinforcement learning","policy optimization","强化学习","深度强化学习","策略优化"]},
+        {"label":"图学习","aliases":["graph neural network","graph learning","graph representation learning","knowledge graph embedding","图神经网络","图学习","图表示学习","知识图谱嵌入"]},
+        {"label":"推荐系统","aliases":["recommender system","recommendation system","collaborative filtering","推荐系统","协同过滤"]},
+        {"label":"语音处理","aliases":["speech recognition","speech synthesis","speaker recognition","audio classification","语音识别","语音合成","说话人识别","音频分类"]},
+        {"label":"多模态学习","aliases":["multimodal learning","multi-modal learning","vision-language model","cross-modal retrieval","多模态学习","视觉语言模型","跨模态检索"]},
+        {"label":"计算机视觉","aliases":["computer vision","visual recognition","visual representation learning","计算机视觉","视觉识别","视觉表征学习"]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "WeChat PDF Academic Importer",
+  "version": "0.7.0",
+  "description": "Silently imports PDFs from a local folder and classifies them with a user-selected academic profile in Zotero.",
+  "author": "WeChat Zotero Importer contributors",
+  "applications": {
+    "zotero": {
+      "id": "wechat-zotero-importer@example.com",
+      "update_url": "https://example.com/wechat-zotero-importer/updates.json",
+      "strict_min_version": "6.999",
+      "strict_max_version": "9.*"
+    }
+  }
+}
