@@ -4,15 +4,27 @@
 
 **让 Zotero 管论文，让 Obsidian 承接阅读与思考。**
 
-PaperFlow 是一个开源的本地科研文献整理工作流，将 PDF 处理、文献下载、Zotero 分类与 Obsidian 笔记衔接起来，减少反复下载、命名和归档的机械操作。适合已经使用 Zotero / Obsidian、愿意配置本地环境的研究者。
+PaperFlow 是一个开源的本地科研文献整理工作流，将微信来源文件分流、文献下载、Zotero 分类与 Obsidian 笔记衔接起来，减少反复下载、命名和归档的机械操作。适合已经使用 Zotero / Obsidian、愿意配置本地环境的研究者。
 
 完成所需配置并主动运行相应模块后，可处理已落盘的 PDF，或解析接收队列中的受支持链接 / DOI；通过 scansci-pdf 适配层尝试下载有合法访问权限的全文，再交给 Zotero 插件导入与整理。下载失败、导入待处理等情况会保留在任务记录中，便于逐篇检查，而不是只显示成功项。
 
-当前整理重点是**光学成像方法**：依据题名、摘要及可提取正文中的关键词，辅助区分 OCT、光纤成像、计算成像等方法分支。不将疾病或器官名称作为默认分类主线；证据不足的结果需要复核，不承诺分类零误差。源 PDF 保留不动，附件命名由 Zotero 插件在其管理的副本上处理。
+**PDF 分流：**扫描用户配置目录中已经落盘的文件，用文件名关键词将疑似个人资料与文献分开处理；个人资料复制归档，文献交给 Zotero。该规则可能误判，不等于能可靠识别所有文件，也不会主动从微信聊天中下载尚未落盘的附件。
+
+**关键词分类：**当前默认工作流重点是光学成像方法，依据题名、摘要及可提取正文中的关键词，辅助区分 OCT、光纤成像、计算成像等方法分支。不将疾病或器官名称作为默认分类主线；证据不足的结果保留待复核，不承诺分类零误差。源 PDF 保留不动，附件命名由 Zotero 插件在其管理的副本上处理。
 
 Obsidian 文献卡片及 AI 阅读依赖另行安装、配置的 **Research Bridge**。PaperFlow 不自带 AI 模型或 API 密钥，也不保证所有公众号链接都能解析、所有 DOI 都能获得全文；付费模型的费用由对应服务提供方收取。
 
 **版本边界：**目前是 Windows 本地工具与组件集合，不是安装后即可使用的公共在线服务。`client/` 桌面窗口仍是配置与模拟验证版，不会直接运行真实下载或导入；WorkBuddy 技能需要用户导入和配置，不能把任务导出视为自动化已经启用。微信链接接收入口需要单独接入，本工具不会读取任意个人聊天，也不自动打开、搜索或操作微信窗口。
+
+### 新版手册中的扩展流程（配套文件待发布）
+
+本地新版手册补充了以下使用流程。**当前公开仓库仍提供 0.7.0 插件；0.7.4 安装包、智能分类脚本和新版手册尚未随本次简介更新发布。**下面不是当前下载仓库即可使用的功能承诺。
+
+- **两级分类：**导入时先用关键词规则兜底；对“待识别”文献，再由 WorkBuddy 中的智能体阅读题名和摘要、提出维度与类别，经新版插件的 `/wechat-zotero/classify` 接口回写到 `微信文献 → 维度 → 类别`。扩展维度可涵盖成像方法以外的学科；证据不足时保留待识别，不强行归类。脚本本身不包含分类模型，也不会自行完成推理。
+- **每日整理时间：**0.7.4 插件设置页可保存 `HH:MM` 时间；需要另行建立 WorkBuddy“时间同步”和“文献整理”两个自动化任务才能联动。按手册方案，次日 00:05 同步，再按新时间整理；不是保存即生效，也不会因安装插件而自动建立调度。
+- **兼容声明：**0.7.4 安装包的 manifest 将上限声明为 Zotero `10.0.*`；这是版本范围声明，不代表本仓库已经完成 Zotero 10 的运行兼容性验证。
+
+待配套文件完成审查并发布后，本节会改为正式使用说明。在此之前，请按下面已公开的组件与 [用户手册](./用户手册.md) 使用，不要将“待发布”流程直接用于真实文库。
 
 开始前请阅读 [用户手册](./用户手册.md) 与 [桌面客户端说明](./client/README.md)。源码采用 MIT 许可证；第三方软件、模型服务与论文全文的许可独立适用。欢迎通过 Issues 反馈问题或通过 Pull Request 参与完善。
 
@@ -34,6 +46,8 @@ The pipeline has four stages, each owned by a small, single-purpose module:
 | 4. Sync to Obsidian + AI reading | Obsidian "Research Bridge" plugin | semi (see below) |
 
 Here, "automatic" describes processing within an invoked stage, not an out-of-the-box background service. The desktop client is a configuration/simulation tool; it does not execute the live pipeline. Link reception and WorkBuddy task activation must be configured separately. Download support is limited to supported sources with lawful access, and keyword-based classification requires review when evidence is insufficient.
+
+The updated local manual also describes agent-assisted multi-dimensional classification and a plugin-configurable daily schedule. Their companion script, plugin 0.7.4 and updated manual are not yet published in this repository. Classification requires an external agent, and schedule changes require separately configured WorkBuddy automations; neither runs just by installing the desktop client.
 
 **About "automatic AI literature reading":** stage 4 relies on the third-party [Research Bridge](https://obsidian.md) Obsidian plugin. PaperFlow only delivers items into Zotero and *read-only observes* whether Research Bridge has produced a note / AI task. The AI reading itself is triggered by Research Bridge inside Obsidian and requires the user to configure an AI provider (API key) there. Without that, you get import + literature cards, but no AI reading.
 
