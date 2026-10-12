@@ -25,6 +25,15 @@ runtime/
 bridge-token
 reviewed-sources.json
 *.sqlite3
+*.sqlite
+*.sqlite3-wal
+*.sqlite3-shm
+.workbuddy/
+inbox/
+undownloaded.json
+reviewed-sources*
+*.env
+.env
 
 # Unreviewed legacy distribution archive: contains internal/personal context.
 PaperFlow-0.2.0-ecosystem.zip

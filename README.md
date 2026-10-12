@@ -2,6 +2,14 @@
 
 ## 中文简介
 
+### 2026-10-12：WorkBuddy 收件入口更新
+
+新增 [DOI / 公众号链接入队入口](./batch/enqueue.py) 与 [PDF 收件入口](./batch/intake_file.py)，将用户自己配置的 WorkBuddy 微信助理收到的消息衔接到本地处理流程；不打开、检索或操控微信窗口。PDF 只复制、按 SHA256 去重，再复用现有目录分流与 Zotero 导入接口。
+
+同时同步发布目录中的 Nature 授权跳转适配及排查说明。此次是配套脚本与文档更新，Zotero XPI 仍为 **0.7.4**。主工程另有下载来源扩展，此次未纳入；本发布版下载仍限既有受支持来源，不代表任意 DOI 都可下载。入口能识别 DOI 不等于该 DOI 已有下载适配。
+
+作者已在自己的 WorkBuddy 环境测试运行；其他用户仍须配置接收会话、队列、来源目录、插件状态路径和 Research Bridge。详细步骤见 [WorkBuddy 收件指南](./docs/workbuddy-intake.md)。本仓库不会替用户绑定微信、创建自动化任务或提供常驻公网接收服务。
+
 **让 Zotero 管论文，让 Obsidian 承接阅读与思考。**
 
 PaperFlow 是一个开源的本地科研文献整理工作流，将微信来源文件分流、文献下载、Zotero 分类与 Obsidian 笔记衔接起来，减少反复下载、命名和归档的机械操作。适合已经使用 Zotero / Obsidian、愿意配置本地环境的研究者。
@@ -56,6 +64,8 @@ The updated manual, companion classification script and plugin 0.7.4 are include
 
 ```
 ├── batch/                  core scripts (scan, orchestrate, import, observe)
+│   ├── enqueue.py          WorkBuddy DOI/article-link intake (queue only)
+│   ├── intake_file.py      WorkBuddy PDF inbox + existing routing
 │   └── tests/              unit tests
 ├── receiver/               WeChat callback receiver (service skeleton)
 ├── client/                 local Tk desktop client (config window + simulation)
